@@ -13,12 +13,12 @@ public class Main{
         for (int i = 1; i <= n; i++){
             System.out.print("Строка " + i + ": ");
             str = scanner.next();
-            System.out.println(uniq_count(str));
+            //System.out.println(uniq_count(str));
         }
-        assert str != null;
-        if (uniq_count(str) == str.length()){
-            System.out.println(str);
-        }
+//        assert str != null;
+//        if (uniq_count(str) == str.length()){
+//            System.out.println(str);
+//        }
     }
     static int uniq_count(String str) {
         String[]simbols = str.split("");
