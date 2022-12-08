@@ -2,41 +2,40 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //Напишите программу, где пользователь вводит сначала количество строк n, затем сами строки.
         // Среди данных строк найти строку с максимальным количеством различных символов.
         // Если таких строк будет много, то вывести первую.
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите количество строк: ");
         int n = scanner.nextInt();
-        String str = null;
-        for (int i = 1; i <= n; i++){
+        int max = 0;
+        String text = null;
+        String str;
+        for (int i = 1; i <= n; i++) {
             System.out.print("Строка " + i + ": ");
             str = scanner.next();
-            //System.out.println(uniq_count(str));
-        }
-//        assert str != null;
-//        if (uniq_count(str) == str.length()){
-//            System.out.println(str);
-//        }
-    }
-    static int uniq_count(String str) {
-        String[]simbols = str.split("");
-        int count = 0;
-        for (int j = 0; j < simbols.length; j++) {
-            String ThisChar = simbols[j];
-            boolean seenThisThisCharBefore = false;
-            for (int i = 0; i < j; i++) {
-                if (ThisChar.equals(simbols[i])) {
-                    seenThisThisCharBefore = true;
-                    break;
+            String[] simbols = str.split("");
+            int count = 0;
+            for (int j = 0; j < simbols.length; j++) {
+                String ThisChar = simbols[j];
+                boolean seenThisThisCharBefore = false;
+                for (int k = 0; k < j; k++) {
+                    if (ThisChar.equals(simbols[k])) {
+                        seenThisThisCharBefore = true;
+                        break;
+                    }
+                }
+                if (!seenThisThisCharBefore) {
+                    count++;
+                }
+                if (max < count) {
+                    max = count;
+                    text = str;
                 }
             }
-            if (!seenThisThisCharBefore) {
-                count++;
-            }
         }
-        return count;
+        System.out.println("Ответ: " + text);
     }
 }
 //Пример для теста работы программы:
